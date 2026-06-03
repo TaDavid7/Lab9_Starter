@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab 9</title>
 
+
   <style>
     button {
       margin: 3px;
@@ -87,6 +88,14 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "d5d3d53981d4411c87600af645188332"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+  
   <script>
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -102,6 +111,79 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+      errorBtns[0].addEventListener('click', () => {
+        console.log('console log message');
+      });
+      errorBtns[1].addEventListener('click', () => {
+        console.error('console error message');
+      });
+      errorBtns[2].addEventListener('click', () => {
+        console.count('console count message');
+      });
+      errorBtns[3].addEventListener('click', () => {
+        console.warn('console warn message');
+      });
+      errorBtns[4].addEventListener('click', () => {
+        console.assert(false, 'console assert message');
+      });
+      errorBtns[5].addEventListener('click', () => {
+        console.clear();
+      });
+      errorBtns[6].addEventListener('click', () => {
+        console.dir(document.body);
+      });
+      errorBtns[7].addEventListener('click', () => {
+        console.dirxml(document.body);
+      });
+      errorBtns[8].addEventListener('click', () => {
+        console.group('Console Group');
+        console.log('message inside the console group');
+      });
+      errorBtns[9].addEventListener('click', () => {
+        console.groupEnd();
+      });
+      errorBtns[10].addEventListener('click', () => {
+        console.table([{ name: 'Alice', age: 30 }, { name: 'Bob', age: 25 }]);
+      });
+      errorBtns[11].addEventListener('click', () => {
+        console.time('Timer');
+      });
+      errorBtns[12].addEventListener('click', () => {
+        console.timeEnd('Timer');
+      });
+      errorBtns[13].addEventListener('click', () => {
+        console.trace('This is a console trace message');
+      });
+      errorBtns[14].addEventListener('click', () => {
+        try{
+          throw new Error('This is a global error');
+        } catch (error) {
+          console.error('Caught a global error:', error);
+        }
+      });
+      // testing out try/catch/finally and throw
+      try {
+        throw new Error('This is a test error');
+      } catch (error) {
+        console.error('Caught an error:', error);
+      } finally {
+        console.log('This will always run');
+      }
+
+      //testing out extending an error object with custom error type
+      class CustomError extends Error {
+        constructor(message) {
+          super(message);
+          this.name = 'CustomError';
+        }
+      }
+      try {
+        throw new CustomError('This is a custom error');
+      } catch (error) {
+        console.error('Caught a custom error:', error);
+      }
+      TrackJS.track('Testing TrackJS!');
+
   </script>
 </body>
 
